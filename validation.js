@@ -7,15 +7,17 @@ form.addEventListener("submit", (e) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (email.value === "" || email.value == null) {
-    messages.push("Valid email required");
+    messages.push("Please provide a valid email");
   } else if (!emailRegex.test(email.value)) {
-    messages.push("valid email required");
+    messages.push("Please provide a valid email");
   }
 
   if (messages.length > 0) {
     e.preventDefault();
     error.innerText = messages.join(", ");
     email.classList.add("error");
+    email.style.border = "1px solid red";
+    error.style.display = "block";
   } else {
     e.preventDefault();
   }
